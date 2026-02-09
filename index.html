@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>114-2 美食社請款</title>
+    <style>
+        :root { --gold: #a3b14a; --bg: #1a1a1a; --card-bg: #262626; --text: #ffffff; }
+        body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; }
+        
+        /* 導覽列 */
+        header { padding: 60px 20px 20px; text-align: center; }
+        .title { font-size: 2.5em; margin-bottom: 40px; }
+        nav { display: flex; justify-content: center; gap: 25px; margin-bottom: 50px; }
+        nav a { color: var(--text); text-decoration: none; font-size: 1.1em; padding-bottom: 5px; cursor: pointer; border-bottom: 2px solid transparent; transition: 0.3s; }
+        nav a.active { border-bottom: 2px solid var(--gold); color: var(--gold); }
+
+        /* 內容區塊 */
+        .container { max-width: 900px; margin: auto; padding: 20px; display: none; animation: fadeIn 0.5s; }
+        .container.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h2 { color: var(--gold); font-size: 3em; text-align: center; margin-bottom: 40px; }
+        .btn-white { display: inline-block; background: white; color: black; padding: 15px 40px; border-radius: 5px; text-decoration: none; font-size: 1.2em; font-weight: bold; margin-top: 20px; transition: 0.3s; }
+        .btn-white:hover { opacity: 0.8; }
+
+        /* 流程區塊 */
+        .flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; text-align: left; margin-top: 40px; }
+        .flow-item h3 { color: var(--gold); font-size: 1.5em; }
+        .flow-item ol { padding-left: 20px; line-height: 2; }
+
+        /* 注意事項區塊 */
+        .notice-section { background: black; padding: 40px; border-radius: 10px; margin-top: 50px; text-align: left; }
+        .notice-list { list-style: none; padding: 0; }
+        .notice-list li { margin-bottom: 15px; position: relative; padding-left: 25px; }
+        .notice-list li::before { content: '›'; position: absolute; left: 0; color: var(--gold); font-size: 1.5em; top: -5px; }
+
+        /* 查詢表格 */
+        .search-input { width: 100%; padding: 15px; background: #333; border: 1px solid #444; color: white; border-radius: 5px; margin-bottom: 20px; box-sizing: border-box; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { border-bottom: 2px solid var(--gold); padding: 15px; text-align: center; color: var(--gold); }
+        td { padding: 15px; border-bottom: 1px solid #333; text-align: center; }
+        .badge { padding: 4px 10px; border-radius: 5px; font-size: 0.9em; }
+        .done { background: var(--gold); color: black; }
+        .wait { background: #444; color: #ccc; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="title">114-2 美食社請款</div>
+    <nav>
+        <a onclick="showTab('flow')" id="tab-flow" class="active">請款流程</a>
+        <a onclick="showTab('apply')" id="tab-apply">請款</a>
+        <a onclick="showTab('account')" id="tab-account">領錢帳號登記</a>
+        <a onclick="showTab('status')" id="tab-status">查詢進度</a>
+    </nav>
+</header>
+
+<div id="flow" class="container active">
+    <h2>請款流程</h2>
+    <div class="flow-grid">
+        <div class="flow-item">
+            <h3>有實體明細</h3>
+            <ol><li>拍照填表單</li><li>明細放T桌盒子</li></ol>
+        </div>
+        <div class="flow-item">
+            <h3>無實體明細</h3>
+            <ol><li>T桌寫請款單</li><li>拍照填表單</li><li>請款單放T桌盒子</li></ol>
+        </div>
+        <div class="flow-item">
+            <h3>電子發票</h3>
+            <ol><li>截圖發票</li><li>填表單</li></ol>
+        </div>
+    </div>
+    <div class="notice-section">
+        <h3 style="color:var(--gold); font-size:2em; text-align:center;">注意事項</h3>
+        <ul class="notice-list">
+            <li>所有發票都要盡量記得打台大統編【03734301】</li>
+            <li>若要同時報帳兩張發票以上，請將發票用釘書機釘一起</li>
+            <li>每張發票寫上你的姓名</li>
+            <li>請先填寫帳號登記</li>
+        </ul>
+        <div style="text-align: center;">
+            <a onclick="showTab('account')" class="btn-white">領錢帳號登記</a><br>
+            <a onclick="showTab('apply')" class="btn-white">請款</a>
+        </div>
+    </div>
+</div>
+
+<div id="apply" class="container" style="text-align:center;">
+    <h2>請款</h2>
+    <p>請先閱讀請款流程與注意事項</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCw_C4pPpeP66iC8rd-NHmgSn60c-Cv36Wi8-5cPALcVzrw/viewform">請款表單</a>
+</div>
+
+<div id="account" class="container" style="text-align:center;">
+    <h2>領錢帳號登記</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5einy0bCLOLWTtzDEKo8kwxmFRVIvd8b3wqmKxdwXmUmSuA/viewform" target="_blank" class="btn-white">前往表單</a>
+</div>
+
+<div id="status" class="container">
+    <h2>查詢進度</h2>
+    <input type="text" id="nameSearch" class="search-input" placeholder="輸入姓名查詢..." onkeyup="filterTable()">
+    <table>
+        <thead>
+            <tr><th>日期</th><th>姓名</th><th>項目</th><th>進度</th></tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr><td colspan="4">資料讀取中...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // 切換頁籤
+    function showTab(tabId) {
+        document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    // 抓取試算表資料 (使用你的 Web App URL)
+    const API_URL = 'https://docs.google.com/spreadsheets/d/1M3ih1D7XDNz3iK7dxin-yxICUjdGGrqJPCDkJjrkxDg/edit?resourcekey=&gid=269836760#gid=269836760'; 
+
+    async function loadData() {
+        if(API_URL.includes('貼上')) return;
+        try {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const body = document.getElementById('tableBody');
+            body.innerHTML = '';
+            data.reverse().forEach(row => {
+                const isDone = row.status.includes('完成') || row.status.includes('已匯');
+                body.innerHTML += `
+                    <tr>
+                        <td>${row.time.split('T')[0]}</td>
+                        <td>${row.name}</td>
+                        <td>${row.item}</td>
+                        <td><span class="badge ${isDone ? 'done' : 'wait'}">${row.status}</span></td>
+                    </tr>
+                `;
+            });
+        } catch (e) { console.error(e); }
+    }
+
+    function filterTable() {
+        let input = document.getElementById("nameSearch").value.toUpperCase();
+        let trs = document.getElementById("tableBody").getElementsByTagName("tr");
+        for (let tr of trs) {
+            tr.style.display = tr.innerText.toUpperCase().includes(input) ? "" : "none";
+        }
+    }
+
+    loadData();
+</script>
+
+</body>
+</html>
